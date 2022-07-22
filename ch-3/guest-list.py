@@ -37,6 +37,7 @@ guests.append("Vermin Supreme")
 
 
 # Reset the counter and print the invitations again. I know this should really be a function, but for some reason when I define it as one, the debug tells me I'm calling 'i' before it is defined.
+# Update: Solved the above by making 'i' a part of the function itself, which resets every time the function is run
 invitations()
 
 # We invited too many people, so calling disinvite function to whittle it down to 2.
@@ -44,7 +45,9 @@ print("Oh shit, we can't find the leaves for the table, and one of the chairs is
 disinvite()
 
 # Then let's run the invitation function to determine the lucky winners and then clear the list
+# We're also going to count how many invitations we sent for exercise 3-9
 invitations()
+print("We're inviting " + str(len(guests)) + " people!") 
 del guests[0]
 del guests[0]
 print(guests)
