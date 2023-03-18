@@ -26,4 +26,4 @@ def print_countries():
 # Calling functions for individual parts of the exercise
 #print_a_sentence()
 #print_rivers()
-print_countries()
+#print_countries()
