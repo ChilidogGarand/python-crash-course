@@ -1,0 +1,26 @@
+# A movie theater charges different ticket prices depending on a person's age.
+# If a person is under the age of 3, the ticket is free; if they are between
+# 3 and 12, the ticket is $10; and if they are over age 12, the ticket is $15.
+# Write a loop in which you ask users their age, and then tell them the cost of
+# their movie ticket.
+
+def ticket_age():
+    active = True
+    while active:
+        message = "\nWelcome to Moviehouse! To determine the price of your ticket, please enter your age below."
+        message += "\n(Type 'quit' to exit the program)"
+        age = int(input(message))
+        if age <= 2:
+            print("Your ticket is free, kiddo!")
+            break
+        elif age <= 12:
+            print("That will be ten dollarbucks!")
+            break
+        elif age > 12:
+            print("That will be fifteen dollarbucks!")
+            break
+        else:
+            print("Come back soon!")
+            break
+
+ticket_age()
