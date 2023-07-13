@@ -5,8 +5,7 @@
 # their movie ticket.
 
 def ticket_age():
-    active = True
-    while active:
+    while True:
         message = "\nWelcome to Moviehouse! To determine the price of your ticket, please enter your age below."
         message += "\n(Type 'quit' to exit the program)"
         age = int(input(message))
@@ -23,4 +22,54 @@ def ticket_age():
             print("Come back soon!")
             break
 
-ticket_age()
+## Three Exits (Exercise 7-6, p124): Write a different version of exercise 7-5
+## that do each of the following at least once:
+## - Use a conditional test in the while statement to stop the loop.
+#       -ticket_age_while()
+## - Use an active variable to control how long the loop runs. 
+#       -ticket_age_active()
+## - Use a break statement to exit the loop when the user enters a 'quit' value.
+#       -ticket_age()
+
+#ticket_age()
+
+def ticket_age_active():
+    active = True
+    while active:
+        message = "\nWelcome to Moviehouse! To determine the price of your ticket, please enter your age below."
+        message += "\n(Type 'quit' to exit the program)"
+        age = input(message)
+        if age == 'quit':
+            print("Come back soon!")
+            active = False        
+        elif int(age) <= 2:
+            print("Your ticket is free, kiddo!")
+            break
+        elif int(age) <= 12:
+            print("That will be ten dollarbucks!")
+            break
+        elif int(age) > 12:
+            print("That will be fifteen dollarbucks!")
+            break
+      
+
+#ticket_age_active()
+
+def ticket_age_while():
+    message = "\nWelcome to Moviehouse! To determine the price of your ticket, please enter your age below."
+    message += "\n(Type 'quit' to exit the program)"
+    age = input(message)
+    while age != 'quit':   
+        if int(age) <= 2:
+            print("Your ticket is free, kiddo!")
+            break
+        elif int(age) <= 12:
+            print("That will be ten dollarbucks!")
+            break
+        elif int(age) > 12:
+            print("That will be fifteen dollarbucks!")
+            break
+    if age == 'quit':
+        print("Come back soon!")
+
+#ticket_age_while()
