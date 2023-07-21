@@ -135,11 +135,9 @@ def polling_dictionary():
         repeat = input("\nWould you like to let another person respond? (yes/no)")
         if repeat == 'no' or 'n':
             polling_active = False
-        elif repeat == 'yes' or 'y':
-            continue
     # Once polling is complete, show the results.
     print("\n--- POLL RESULTS ---")
     for name, response in responses.items():
         print(f"{name} would like to climb {response}.")
 
-polling_dictionary()
+# polling_dictionary()
