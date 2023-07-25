@@ -81,4 +81,43 @@ def describe_pet(animal_type, pet_name):
 # Order matters in positional arguments. If we mix up the order of the arguments,
 # unexpected results can occur.
 
-describe_pet('harry', 'hamster')
+#describe_pet('harry', 'hamster')
+
+# Keyword Arguments
+# A keyword argument is a name-value pair that you pass to a function. The
+# name and value are directly associated within the argument, which means when
+# it is passed to the function, there's no confusion (like with positional argu-
+# -ments above). This eliminates any worries about have to correctly order the
+# arguments in the function call, and clarifies the role of each value.
+
+def describe_pet_kwa(animal_type, pet_name):
+    """Display information about a pet."""
+    print(f"I have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+#describe_pet_kwa(animal_type="hamster", pet_name="harry")
+
+# Default Values
+# When writing a function, you can define a default value for each paramter. If
+# the argument for a parameter is provided in the function call, Python will
+# use the argument. Otherwise, Python will use the default value. Using default 
+# values can simply function calls and clarify the ways those function calls are
+# typically used. 
+
+def describe_pet_dv(pet_name, animal_type='dog'):
+    """Display information about a pet."""
+    print(f"I have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+# In the above example, if no value is assigned to animal_type, it will auto-
+# -matically use 'dog' as the default value. 
+# With default values, order is important when defining the default. It will
+# always need to come last after all values without defaults. This is because
+# Python still interprets this as a positional argument. However, this does mean
+# we can specify the function call.abs
+
+# describe_pet_dv('willie')
+
+# You can still specify the argument in the function call, however, and it will
+# override the default value.abs
+describe_pet_dv(pet_name='harry', animal_type='hamster')
