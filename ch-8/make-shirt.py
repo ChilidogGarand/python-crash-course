@@ -9,4 +9,16 @@ def make_shirt(size, message):
     print(f'\nOkay, making you a size {size} shirt that says "{(message.capitalize())}".')
 
 #make_shirt("large", "don't panic")
-make_shirt(size='large',message="don't panic")
+#make_shirt(size='large',message="don't panic")
+
+# 8-4, p137
+# Modify the make_shirt() function so that shirts are large by default with a 
+# message that says "I love Python". Make a large shirt and a medium shirt
+# with the default method, and a shirt of any size with a different message.
+
+def make_shirt_def(size="large", message="i love python"):
+    print(f'\nOkay, making you a size {size} shirt that says "{(message.capitalize())}".')
+
+#make_shirt_def()
+#make_shirt_def(size="medium")
+#make_shirt_def(size="extra large", message="don't panic")
