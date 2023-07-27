@@ -119,5 +119,128 @@ def describe_pet_dv(pet_name, animal_type='dog'):
 # describe_pet_dv('willie')
 
 # You can still specify the argument in the function call, however, and it will
-# override the default value.abs
-describe_pet_dv(pet_name='harry', animal_type='hamster')
+# override the default value.
+
+#describe_pet_dv(pet_name='harry', animal_type='hamster')
+
+# Equivalent Function Calls
+# Because positional arguments, keyword arguments, and default values can all be
+# used together, often you'll have several equivalent ways to call a function.
+# So in a function call like the one we just wrote...
+#
+# def describe_pet_dv(pet_name, animal_type='dog'):
+
+# ...an arugment will ALWAYS need to be provided for pet_name, and you can 
+# provide that arugment with either positional or keyword format. If you're 
+# describing something other than a dog, you would also have to specify an 
+# argument for animal_type (which you can also do via the positional or keyword
+# format). So for the above function, the following calls would all work.
+
+# A dog named Willie
+# describe_pet_dv('willie')
+# describe_pet_dv(pet_name='willie')
+
+# A hamster named Harry
+# describe_pet_dv('harry', 'hamster')
+# describe_pet_dv('pet_name='harry', animal_type='hamster')
+# describe_pet_dv('animal_type='hamster', pet_name='harry')
+
+# Avoiding argument errors
+# Unmatched arguments occur when you provide fewer or more arguments than the
+# function requires to do its work. Python will read the function's code and tell
+# us the name of the arguments we need to provide. This is a good reason to give
+# your variables and functions descriptive names. 
+
+# Return Values
+# Functions don't always have to display output directly, and can process data
+# and return a value or set of values instead. This is called the return value.
+# This takes a value from inside a function and sends it back to the line that
+# called the function. This allows much of a program to be separated into
+# disparate functions, simplifying the body of the program.
+
+# Returning a Simple Value
+
+def get_formatted_name(first_name, last_name):
+    """Return a full name, neatly formatted."""
+    full_name = f"{first_name} {last_name}"
+    return full_name.title()
+
+#musician = get_formatted_name('jimi', 'hendrix')
+#print(musician)
+
+# When you call a function for a retun value, you need to provide a variable
+# that the value can be assigned to (musician, in this case). 
+
+# Making an Argument Optional
+# Using default values, you can make a given argument optional.
+
+def get_formatted_name_def(first_name, last_name, middle_name=''):
+    """Return a full name, neatly formatted"""
+    if middle_name:
+        full_name = f"{first_name} {middle_name} {last_name}"
+    else:
+        full_name = f"{first_name} {last_name}"
+    return full_name.title()
+
+#musician = get_formatted_name_def('john', 'hooker', 'lee')
+#musician = get_formatted_name_def('jimi', 'hendrix')
+#print(musician)
+
+# By giving the middle name an empty default value, we can ignore the argument
+# unless the user provides a value. This allows functions to handle a wide 
+# range of use cases while letting function calls remain as simple as possible.
+
+# Returning a Dictionary
+# A function can return any kind of value you need it to, including complicated
+# data structures like dictionaries.
+
+def build_person(first_name, last_name):
+    """Return a dictionary of information about a person."""
+    person = {'first': first_name, 'last': last_name}
+    return person
+
+#musician = build_person('jimi','hendrix')
+#print(musician)
+
+# You can use default values to accept optional values as well.
+
+def build_person_age(first_name, last_name, age=None):
+# 'None' is used when a variable has no specific value assigned to it. In a 
+# conditional test, 'None' will default to 'False'.
+    """Return a dictionary of information about a person."""
+    person = {'first': first_name, 'last': last_name}
+    if age:
+        person['age'] = age
+    return person
+
+#musician = build_person_age('jimi', 'hendrix', age = 27)
+#print(musician)
+
+# Using a Function with a While Loop
+#  You can use use functions with all the Python structures learned thus far.
+
+def greet_loop():
+    while True:
+        print("\nPlease tell me your name:")
+        f_name = input("\nFirst name: ")
+        l_name = input("\nLast Name: ")
+        formatted_name = get_formatted_name(f_name, l_name)
+        print(f"\nHello, {formatted_name}!")
+
+# The issue with this loop is that it will loop indefinitely, which we can
+# correct with an if statement.abs
+
+def greet_loop_q():
+    while True:
+        print("\nPlease tell me your name.")
+        print("Enter 'q' at any time to quit.")
+        f_name = input("First name: ")
+        if f_name == 'q':
+            break
+        l_name = input("Last name: ")
+        if l_name == 'q':
+            break
+        formatted_name = get_formatted_name(f_name, l_name)
+        print(f"Hello {formatted_name}!")
+
+greet_loop_q()
