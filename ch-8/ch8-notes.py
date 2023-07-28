@@ -509,3 +509,39 @@ pizza.make_pizza(18, 'ground beef', 'pickles', 'cheddar cheese')
 # asterisk operator.
 
 # from pizza import *
+
+# The asterisk in the import statement tells Python to copy every function from
+# the module pizza. Since you're importing every function, you don't need to 
+# use the dot when calling the functions, but it's better not to import
+# functions this way when working with larger modules that you haven't written 
+# yourself. Python may see several functions or variables with the same name, 
+# and overwrite those.
+
+# Best practice is to either import only the functions you want, or to import
+# the module and use the dot notation. This leads to clear, easily readable code.
+
+# Styling Functions
+# - Functions should have descriptive names
+# - Function names should use lowercase letters and underscores.
+# - Module names should use these conventions as well.
+# - Every function should have a comment that concisely describes what the function
+#   does.
+# - This comment appears after the function definition and uses the docstring format.
+# - Other programmers should be able to use your function by reading only the docstring.
+# - The should be able to use the function in their programs by knowing the name
+#   of the function, the arguments it needs, and the kind of value it returns.
+# - When specifying a default value for a paramter, no spaces should be used on
+#   either side of the equal sign.
+# - The same convention should be used for keyword arguments.
+# - PEP8 recommends you limit lines of code to 79 characters so that every line
+#   is visible in a reasonably-sized editor window.
+# - If a set of paramters causes a function to be longer than 79 characters,
+#   press enter after the opening parentheses on the definition line. On the next
+#   line, press TAB twice to separate the list of arguments from the body of the
+#   function, which will only be indented one level.
+# - If your program or module has more than one function, separate each by two
+#   blank lines to make it easier to see where one function ends and the other
+#   begins.
+# - All import statements should be written at the beginning of the file. The
+#   only exception is if you use comments at the beginning of the file to
+#   describe the overall program.
