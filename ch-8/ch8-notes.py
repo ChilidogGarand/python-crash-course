@@ -459,3 +459,53 @@ import pizza
 
 pizza.make_pizza(16, 'pepperoni')
 pizza.make_pizza(18, 'ground beef', 'pickles', 'cheddar cheese')
+
+# Note: this has also been done in making-pizzas.py
+
+# To call a function from an imported module, enter the name of the module you
+# imported, followed by the name of the function, separated by a dot. 
+
+# module.function(arguments)
+
+# You can also import a specific function from a module.
+
+# from module_name import function_name
+
+# This can be done for as many functions as you want from a given module
+
+# from module_name import function_0, function_1, function_n
+
+# To to import the specific function from pizza.py, we can format it like this:
+
+# from pizza import make_pizza
+
+# When importing specific functions, you don't need to use the dot notation when
+# you make the function call. We've explicity imported the function in the import
+# statement, so we can call it by its name alone.
+
+# Using 'as' to Give a Function an Alias
+# We can further simplify function calls from other modules by giving them an
+# alias using 'as'.
+
+# from pizza import make_pizza as mp
+
+# This renames the function make_pizza to mp, so any function calls we want to
+# make can simply be written as 'mp', which can avoid confusion with any other
+# make_pizza function we have in the current module.
+
+# You can also use an 'as' statement to import a module as an alias.
+
+# import pizza as p
+
+# This allows you to call functions from that module more quickly.abs
+
+# p.make_pizza(16, 'pepperoni)
+
+# When giving a module an alias the function within the module will retain the
+# same name. This is more important to the readability of code than the full
+# module name.
+
+# Youi can also tell Python to import every function in a module by using an
+# asterisk operator.
+
+# from pizza import *
