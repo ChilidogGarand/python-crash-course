@@ -314,8 +314,8 @@ def show_completed_models(completed_models):
 # Once we have those functions defined, we can define the lists needed for these
 # to do their thing.
 
-unprinted_designs = ['phone case', 'dodecahedron', 'robot pendant']
-completed_models = []
+#unprinted_designs = ['phone case', 'dodecahedron', 'robot pendant']
+#completed_models = []
 
 # Then we call the functions
 
@@ -346,3 +346,49 @@ completed_models = []
 # with an existing list to avoid using time and memory needed to make a separate
 # copy, especially with large lists.
 
+# Passing an Arbitrary Number of Arguments
+# Sometimes you won't know ahead of time how many arguments a function needs to
+# accept. Python allows a function to collect an arbitrary number of arguments
+# from the calling statement. We can add an asterisk to the parameter in the 
+# function that allows it to make an empty tuple that matches the variable and
+# populate it with whatever data it receives.
+
+def make_pizza(*toppings):
+    """Print a list of toppings that have been requested"""
+    print(toppings)
+
+#make_pizza('pepperoni')
+#make_pizza('mushrooms', 'green onion', 'extra cheese')
+
+# Note that Python will pack all the values into a tuple, even if the function
+# only receives one value.
+
+# Now we can replace the print() call with a loop that runs through the list of 
+# toppings and describes the pizza being ordered.
+
+def make_pizza_summary(*toppings):
+    """Summarize the pizza we are about to make."""
+    print("\nMaking a pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+
+#make_pizza_summary('pepperoni')
+#make_pizza_summary('pepperoni', 'jalapeno', 'bacon')
+
+# The function responds appropriately whether it receives one value or three
+# values. This syntax will work no matter how mangy arguments the function receives.
+
+# Mixing Positional and Arbitrary Arguments
+# If you want a function to accept several different kinds of arguments, the
+# parameter that accepts an aribitrary number of arguments must be placed last 
+# in the function definition. Python matches positional and keywork arguments
+# first and then collects any remaining arguments in the final parameter.
+
+def make_pizza_size(size, *toppings):
+    """Summarize the pizza we are about to make"""
+    print(f"\nMaking a {size}-inch pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+
+make_pizza_size(16, 'pepperoni')
+make_pizza_size(12, 'mushrooms', 'green peppers', 'onions', 'extra cheese')
