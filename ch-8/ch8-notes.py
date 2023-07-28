@@ -243,4 +243,95 @@ def greet_loop_q():
         formatted_name = get_formatted_name(f_name, l_name)
         print(f"Hello {formatted_name}!")
 
-greet_loop_q()
+# greet_loop_q()
+
+# Passing a List
+# It is often useful topass a list of names, numbers, or more complex objects
+# (such as dictionaries) to a function. When you pass a list to a function, the
+# function gets complete access to the contents of the list. 
+
+# Let's say we have a list of users we want to greet individually.
+
+def greet_users(names):
+    """Print a simple greeting to each user on the list."""
+    for name in names:
+        msg = f"Hello, {name.title()}!"
+        print(msg)
+
+# We can call a list of these users and greet them indidually with the following
+# list and function call. The above function takes the names on the list, assigns
+# them to the "names" variable, and then prints a greeting to each user
+
+#usernames = ['hannah', 'ty', 'margot']
+#greet_users(usernames)
+
+# Modifying a List in a Function
+# When you pass a list to a function, the function can modify the list. Any changes
+# made to the list inside the function's body are permanent, allowing you to work
+# efficiently even with large amounts of data. 
+
+# Consider a company that creates 3D-printed models of designs that users submit.
+# Designs that need to be printed are stored in a list, and after being printed,
+# move to a separate list. 
+
+# Start with some designs that need to be printed
+#unprinted_designs = ['phone case', 'robot pendant', 'dodecahedron']
+#completed_models = []
+
+# Simulate printing each design until none are left.
+# Move each design to completed_models after printing.
+#while unprinted_designs:
+#    current_design = unprinted_designs.pop()
+#    print(f"Printing model: {current_design}")
+#    completed_models.append(current_design)
+
+# Display all completed models.
+#print("\nThe following models have been printed:")
+#for completed_model in completed_models:
+#    print(completed_model)
+
+# This program starts with a list of designs that need to be printed and an empty
+# list to move completed prints into. However, we can easily reorganize this
+# code by writing two functions that each do a specific job. The code itself
+# doesn't really change, we are just structuring it better.
+
+def print_models(unprinted_designs, completed_models):
+    """
+    Simulate printing each design, until none are left.
+    Move each design to completed_models after printing.
+    """
+    while unprinted_designs:
+        current_design = unprinted_designs.pop()
+        print(f"Printing model: {current_design}")
+        completed_models.append(current_design)
+
+def show_completed_models(completed_models):
+    """Show all the models that were printed"""
+    print("\nThe following models have been printed:")
+    for completed_model in completed_models:
+        print(completed_model)
+
+# Once we have those functions defined, we can define the lists needed for these
+# to do their thing.
+
+unprinted_designs = ['phone case', 'dodecahedron', 'robot pendant']
+completed_models = []
+
+# Then we call the functions
+
+#print_models(unprinted_designs, completed_models)
+#show_completed_models(completed_models)
+
+# Preventing a Function from Modifying a List
+# Sometimes, you'll want to prevent a list from being modified by a function.
+# You can do this by passing the function a copy of the original list, instead
+# of the list itself.abs
+
+# function_name(list_name[:])
+
+# Using the slice notation makes a copy of the list to send to the function. If 
+# we didn't want to empy the list of unprinted designs in the above functions,
+# we could call print_models() like this.
+
+print_models(unprinted_designs[:], completed_models)
+print(unprinted_designs)
