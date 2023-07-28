@@ -333,5 +333,16 @@ completed_models = []
 # we didn't want to empy the list of unprinted designs in the above functions,
 # we could call print_models() like this.
 
-print_models(unprinted_designs[:], completed_models)
-print(unprinted_designs)
+# print_models(unprinted_designs[:], completed_models)
+#print(unprinted_designs)
+
+# Print_models() is still able to do what it needs to do because it receives
+# a list of all unprinted designs, but as a copy of the original list. The
+# original list is unaffected.
+
+# Even though you can preserve the contents of a list by passing a copy of it to
+# your functions, you should pass the original list to functions unless you have
+# a specific reason to pass a copy. It's more efficient for a function to work
+# with an existing list to avoid using time and memory needed to make a separate
+# copy, especially with large lists.
+
