@@ -390,5 +390,31 @@ def make_pizza_size(size, *toppings):
     for topping in toppings:
         print(f"- {topping}")
 
-make_pizza_size(16, 'pepperoni')
-make_pizza_size(12, 'mushrooms', 'green peppers', 'onions', 'extra cheese')
+#make_pizza_size(16, 'pepperoni')
+#make_pizza_size(12, 'mushrooms', 'green peppers', 'onions', 'extra cheese')
+
+# In the functions definition, Python assigns the first value it recveives to the
+# parameter size. All other values are stored in the tuple 'toppings'. The 
+# function calls specify size first, then all toppings.
+
+# You'll often see the generic parmater name *args, which collects arbitrary
+# positional arguments like this.
+
+# Using Arbitrary Keyword Arguments
+#  Sometimes you will want to pass an arbitrary number of arguments, but you
+# won't know ahead of time what kind of information will be passed to the function.
+# Python allows you to write a function that accept as many key-value pairs as 
+# the calling statement provides. One good example of this is building user
+# profiles: you know you'll get information about a user, but you don't know
+# what kind of information you'll receive. 
+
+def build_profile(first, last, **user_info):
+    """Build a dictionary containing everything we know about a user."""
+    user_info['first_name'] = first
+    user_info['last_name'] = last
+    return user_info
+
+user_profile = build_profile('albert', 'einstein',
+location='princeton',
+field='physics')
+print(user_profile)
