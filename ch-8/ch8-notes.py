@@ -384,11 +384,11 @@ def make_pizza_summary(*toppings):
 # in the function definition. Python matches positional and keywork arguments
 # first and then collects any remaining arguments in the final parameter.
 
-def make_pizza_size(size, *toppings):
-    """Summarize the pizza we are about to make"""
-    print(f"\nMaking a {size}-inch pizza with the following toppings:")
-    for topping in toppings:
-        print(f"- {topping}")
+#def make_pizza_size(size, *toppings):
+#    """Summarize the pizza we are about to make"""
+#    print(f"\nMaking a {size}-inch pizza with the following toppings:")
+#    for topping in toppings:
+#        print(f"- {topping}")
 
 #make_pizza_size(16, 'pepperoni')
 #make_pizza_size(12, 'mushrooms', 'green peppers', 'onions', 'extra cheese')
@@ -414,7 +414,48 @@ def build_profile(first, last, **user_info):
     user_info['last_name'] = last
     return user_info
 
-user_profile = build_profile('albert', 'einstein',
-location='princeton',
-field='physics')
-print(user_profile)
+#user_profile = build_profile('albert', 'einstein',
+#location='princeton',
+#field='physics')
+#print(user_profile)
+
+# Using double asterisks ("**arg") before a paramter causes python to create
+# an empty dictionary called user_info and pack the name-value pairs it receives
+# into this dictionary. Within the function, you can access the key-value pairs
+# in user_info as you would any other dictionary.
+
+# You can mix positional, keyword, and arbitrary values in many different ways
+# when writing your function, but use the simplest approach that gets the job 
+# done. Efficiency is what you are aiming for.abs
+
+# You will often see the paramter name '**kwargs' used to collect non-specific
+# keyword arguments.
+
+# Storing Your Functions in Modules
+# One advantage of functions is that they separate blocks of code from your main
+# program. By using descriptive names for your functions, your main program
+# is much easier to follow. You can also go a step further and store your
+# functions in a separate file called a module, and then importing that module
+# into your main program. An import statement tells python to make the code in a
+# module available in the currently running program file.
+
+# This allows you to hide the details of the code and focus on the higher-level
+# logic. It also allows you to use functions in several programs. When you store
+# your functions in different files, those files can be shared with other 
+# programmers without having to share the entire program. Knowing how to import
+# functions also lets you use libraries of functions that other programmers
+# have written.
+
+# Importing an entire module
+# A module is a file ending in .py that contains the code you want to import
+# into your program. For example, for the pizza function above, we could import
+# from another module, called pizza.py
+
+# Then, before we make the function call, we can import that module.
+
+import pizza
+
+# Once that's done, we can call the function the same way as above.
+
+pizza.make_pizza(16, 'pepperoni')
+pizza.make_pizza(18, 'ground beef', 'pickles', 'cheddar cheese')
