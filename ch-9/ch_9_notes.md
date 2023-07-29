@@ -96,4 +96,98 @@ your_dog.roll_over()
 - Even if both dogs were otherwise identical, Python would still create a separate instance for each dog.
 - You can create as many instances from one class as you need, as long as each instance is given a unique variable name or occupies a unique spot in a list or dictionary.
 
-# Working with Classes and Instances
+## Working with Classes and Instances
+- Once you write a class, you will most often work with instances created from
+that class.
+- One of the first tasks you'll do is to modify the attributes of an instance 
+directly, or write methods that update attributes in specific ways.
+
+```
+class Car:
+"""A simple attempt to represent a car"""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car"""
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+my_new_car = Car('audi', 'a4', 2019)
+print(my_new_car.get_descriptive_name())
+
+```
+
+### Setting a Default Attribute
+- When an instance is created, attributes can be defined without being passed in as parameters.
+- These attributes are defined in the __init__() method, where they are assigned a default value.
+- For instance, we can add an attribute called `odometer_reading` to the `Car` class we just created.
+
+```
+class Car:
+"""A simple attempt to represent a car"""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car"""
+        self.make = make
+        self.model = model
+        self.year = year
+        # Here, we add a default value for the odometer reading.
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    # And here, we can call the odometer reading that we defined in the __init__()
+    def read_odometer(self): 
+        """Print a statement showing the cars mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+my_new_car = Car('audi', 'a4', 2019)
+print(my_new_car.get_descriptive_name())
+```
+
+### Modifying an Attribute's Value Through a Method
+- We can also write methods that change certain attributes.
+- Instead of accessing the attribute directly, you pass the new value to a method that handles updating the value within the instance.
+
+```
+def update_odometer(self, mileage):
+    """Set the odometer reading to a given value."""
+    self.odometer_reading = mileage
+
+```
+
+- We can also extend this method to do more work by preventing the odometer
+from rolling back.
+
+```
+def update_odometer(self, mileage):
+    """
+    Set the odometer reading to a given value.
+    Reject the change if it attempts to roll the odometer back.
+    """
+    if mileage >= self.odometer_reading:
+        self.odometer_reading = mileage
+    else:
+        print("You can't roll back an odometer!)
+    
+```
+
+### Incrementing an Attributes Value Through A Method
+- Sometimes you want to increment a value by an arbitrary amount rather than set an entirely new value.
+
+```
+def increment_odometer(self, miles):
+    """Add the given amount to the odometer reading."""
+    self.odometer_reading += miles
+```
+
+- You can use methods like this to control how users of your program update values such as an odometer reading.
+- Anyone with access to the program can set an odomter reading to any value by accessing the attribute directly. Effective security takes extreme attention to detail in addition to basic checks like those shown here.

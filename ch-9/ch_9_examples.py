@@ -52,13 +52,39 @@ class Car:
         print(f"This car has {self.odometer_reading} miles on it.")
 
     def update_odometer(self, mileage):
-        """Set the odometer reading to a given value."""
-        self.odometer_reading = mileage
+        """Set the odometer reading to a given value.
+         Reject the change if it attempts to roll the odometer back.
+        """
+    # Here, we add an if statement to prevent the odometer from being rolled back.
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+    
+    #We can also create a method that increments the odometer by a specific amount.
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
 
 my_new_car = Car('audi', 'a4', 2019)
 #print(my_new_car.get_descriptive_name())
-#print(my_new_car.read_odometer())
-#print(my_new_car.update_odometer(23))
-print(my_new_car.read_odometer())
+
+# We can modify the odomter directly by passing a new value when the method is
+# called.
+
+#my_new_car.odometer_reading = 23
+#my_new_car.read_odometer()
+
+# We can use the methods we created in the class to update the odometer.
+#my_new_car.read_odometer()
+#my_new_car.update_odometer(23)
+#my_new_car.read_odometer()
+#my_new_car.update_odometer(47)
+#my_new_car.read_odometer()
+#my_new_car.update_odometer(23)
+#my_new_car.increment_odometer(23)
+#my_new_car.read_odometer()
+#my_new_car.increment_odometer(100)
+#my_new_car.read_odometer()
 
 
