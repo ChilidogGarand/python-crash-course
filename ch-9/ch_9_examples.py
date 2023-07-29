@@ -96,13 +96,44 @@ class ElectricCar(Car):
         """Initialize attributes of the parent class."""
         super().__init__(make, model, year)
         # We add battery size to give it an attribute unique to this child class.
-        self.battery_size = 75
+        #self.battery_size = 75
+        # Changing battery size to refer to the class Battery
+        self.battery = Battery()
 
-    # Now we add a function to describe the battery, which becomes a method specific to the child class.    
+
+    # Now we add a function to describe the battery, which becomes a method specific to the child class.
+    # Since we are using a separate Battery class, we can just use it to make this
+    # call    
+    #def describe_battery(self):
+        #"""Print a statement describing the battery size."""
+        #print(f"\nThis car has a {self.battery_size}-kWh battery.")
+
+# We can also create another class for the battery to have the `ElectricCar` class
+# refer to a more detailed, disparate class.
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def __init__(self, battery_size=75):
+        """Initialize the batteries attributes."""
+        self.battery_size = battery_size
+
     def describe_battery(self):
-        """Print a statement describing the battery size."""
-        print(f"\nThis car has a {self.battery_size}-kWh battery.")
+        """Print a statement describing a battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+    # Adding a method to provide the range of a car based on the battery size
+    def get_range(self):
+        """Print a statement about the range this battery provides."""
+        if self.battery_size == 75:
+            range = 260
+        elif self.battery_size == 100:
+            range = 315
+
+        print(f"This car can go about {range} miles on a full charge.")
+
 
 my_tesla = ElectricCar('tesla', 'model s', 2019) 
 print(my_tesla.get_descriptive_name())
-my_tesla.describe_battery()
+my_tesla.battery.describe_battery()
+my_tesla.battery.get_range() 
