@@ -87,4 +87,22 @@ my_new_car = Car('audi', 'a4', 2019)
 #my_new_car.increment_odometer(100)
 #my_new_car.read_odometer()
 
+# We can create a child class of `Car` specific to electric cars.
 
+class ElectricCar(Car):
+    """Represent aspects of a car, specific"""
+    
+    def __init__(self, make, model, year):
+        """Initialize attributes of the parent class."""
+        super().__init__(make, model, year)
+        # We add battery size to give it an attribute unique to this child class.
+        self.battery_size = 75
+
+    # Now we add a function to describe the battery, which becomes a method specific to the child class.    
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"\nThis car has a {self.battery_size}-kWh battery.")
+
+my_tesla = ElectricCar('tesla', 'model s', 2019) 
+print(my_tesla.get_descriptive_name())
+my_tesla.describe_battery()
