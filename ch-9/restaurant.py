@@ -8,6 +8,10 @@
 # Make an instance called `restaurant` from your class. Print the two attributes
 # individually, and then call both methods.
 
+# Exercise 9-2, p162
+# Create three different instance from the class, and call describe_restaurant()
+# for each instance.
+
 class Restuarant:
     """Creates an instance representing an aribitrary restuarant"""
 
@@ -26,7 +30,10 @@ class Restuarant:
 
 arbys = Restuarant("arby's", 'meatish')
 hyfe = Restuarant("Here's Your FXXXin' Eggs", "punk-rock breakfast")
+cattleack = Restuarant("Cattleack BBQ", 'barbecue')
 arbys.describe_restaurant()
 arbys.open_restaurant()
 hyfe.describe_restaurant()
 hyfe.open_restaurant()
+cattleack.describe_restaurant()
+cattleack.describe_restaurant()
