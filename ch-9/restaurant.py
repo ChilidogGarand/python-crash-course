@@ -24,6 +24,13 @@
 # number of customers who have been served. Call this method with any number you
 # like that represents how many customers were served in a day of business.
 
+# Exercise 9-6, p173
+# An ice cream stand is a specific kind of restuarant. Write a class called
+# `IceCreamStand` that inherits from the `Restuarant` class you wrote. Add an
+# attribute called `flavors` that stores a list of ice cream flavors. Write a
+# method that displays these flavors. Create an instance of IceCreamStand and 
+# call this method.
+
 class Restuarant:
     """Creates an instance representing an aribitrary restuarant"""
 
@@ -35,7 +42,7 @@ class Restuarant:
 
     def describe_restaurant(self):
         """Describe the name and cuisine a restaurant serves."""
-        print(f"\n{self.restuarant_name.title()} is a restaurant that serves {self.cuisine_type} food.")
+        print(f"\n{self.restuarant_name.title()} is a restaurant that serves {self.cuisine_type}.")
 
     def open_restaurant(self):
         """Print a statement that says the restaurant is open."""
@@ -53,20 +60,42 @@ class Restuarant:
         """Prints a message with the name of the restuarant and how many people it has served."""
         print(f"\n{self.restuarant_name.title()} has served {self.number_served} customers today.")
 
+class IceCreamStand(Restuarant):
+    """Creates an instance representing an IceCreamStand."""
+
+    def __init__(self, restuarant_name, cuisine_type):
+        """Initialize the ice cream stand from the parent class."""
+        super().__init__(restuarant_name, cuisine_type)
+        self.flavors = ['chocolate', 'vanilla', 'rocky road', 'butter pecan'
+        , 'rum']
+
+    def describe_restaurant(self):
+        """Describes an ice cream shop and the kinds of flavors it has."""
+        print(f"\n{self.restuarant_name.capitalize()} is an ice cream shop.")        
+        print(f"They have the following flavors available:")
+        for flavor in self.flavors:
+            print(flavor.title())
+
+
+
+
 #arbys = Restuarant("arby's", 'meatish')
-hyfe = Restuarant("Here's Your FXXXin' Eggs", "punk-rock breakfast")
+#hyfe = Restuarant("Here's Your FXXXin' Eggs", "punk-rock breakfast")
 #cattleack = Restuarant("Cattleack BBQ", 'barbecue')
 #arbys.describe_restaurant()
 #arbys.open_restaurant()
-hyfe.describe_restaurant()
-hyfe.open_restaurant()
+#hyfe.describe_restaurant()
+#hyfe.open_restaurant()
 #cattleack.describe_restaurant()
 #cattleack.describe_restaurant()
-hyfe.number_served = 1
-hyfe.print_number_served()
-hyfe.set_number_served(3)
-hyfe.print_number_served()
-hyfe.set_number_served(0)
-hyfe.print_number_served()
-hyfe.increment_number_served(45)
-hyfe.print_number_served()
+#hyfe.number_served = 1
+#hyfe.print_number_served()
+#hyfe.set_number_served(3)
+#hyfe.print_number_served()
+#hyfe.set_number_served(0)
+#hyfe.print_number_served()
+#hyfe.increment_number_served(45)
+#hyfe.print_number_served()
+
+tcby = IceCreamStand('tcby', 'ice cream')
+tcby.describe_restaurant()
