@@ -19,17 +19,18 @@
 
 
 # Modifying this class for exercise 9-7
+# Adding priv_level back for exercise 9-8
 class User:
     """Creates an instance representing a specific user"""
 
-    def __init__(self, first_name, last_name, department): #priv_level):
+    def __init__(self, first_name, last_name, department):
         """Initialize attributes to describe a user."""
         self.first_name = first_name
         self.last_name = last_name
-        #self.priv_level = priv_level
+        self.priv_level = 'user'
         self.department = department
         # Adding an attribute defining user-level privileges
-        self.privs = ['can read/write messages', 'can edit own posts']
+        self.privs = Privileges(self.priv_level)
         self.login_attempts = 0
 
     def describe_user(self):
@@ -60,11 +61,11 @@ class User:
         print(f"\n{self.first_name.title()} {self.last_name.title()} has unsuccessfully attempted to log in {self.login_attempts} times without success.")
 
     # Adding a method that shows user privileges
-    def show_privileges(self):
-        """Displays privileges for the user."""
-        print(f"\n{self.first_name.title()} {self.last_name.title()} has the following privileges in this system:")
-        for priv in self.privs:
-            print(f"- {priv}")
+#   def show_privileges(self):
+#       """Displays privileges for the user."""
+#       print(f"\n{self.first_name.title()} {self.last_name.title()} has the following privileges in this system:")
+#       for priv in self.privs:
+#           print(f"- {priv}")
 
 # user_a = Admin('john', 'brown', 'department of equity')
 # user_b = User('frances', 'bartleby', 'legal')
@@ -89,6 +90,7 @@ class User:
 #user_a.reset_login_attempts()
 #user_a.print_login_attempts()
 
+# Exercise 9-7, p173
 # An administrator is a special kind of user. Write a class called `Admin` that
 # inherits from the `User` class that you wrote in Exercise 9-3 or exercise 9-5.
 # Add an attribute, `privileges` that stores a list of strings like 'can add post',
@@ -96,17 +98,54 @@ class User:
 # `show_privileges()` that lists the administrators's set of privileges. Create
 # an instance of `Admin` and call your method.
 
+# Adding priv_level to this class, and calling privileges as a separate class.
 class Admin(User):
     """Creates an instance representing a user with admin-level privileges"""
 
     def __init__(self, first_name, last_name, department):
         """Initializes attributes to describe an admin"""
         super().__init__(first_name, last_name, department)
-        self.privs += ['can add user', 'can delete user', 'can delete any post',
+        self.priv_level = 'admin'
+# Calling privileges as a separate function
+        self.privs = Privileges(self.priv_level)
+#        self.privs = ['can add user', 'can delete user', 'can delete any post',
+#                        'can edit any post', 'can reset passwords', 'can reset login attempts']
+
+#user_a = Admin('john', 'brown', 'department of equity')
+#user_b = User('frances', 'bartleby', 'legal')
+
+#user_a.show_privileges()
+#user_b.show_privileges()
+
+# Exercise 9-8, p173
+# Write a separate class called `Priveleges`. The class should have one attribute,
+# priveleges, that stores a list of strings as defined in exercise 9-7. Move the
+# show_privileges() method to this class. Make a `Privilges` instance as an 
+# attribute of the Admin class. Create a new instance of `Admin` and use your method
+# to show its privileges.
+
+class Privileges():
+    """Returns privileges for a given privilege level."""
+    
+    def __init__(self, priv_level):
+        self.privileges = []
+        # self.privileges is set according to the admin level of the user, which
+        # is dependent on the class they were created with.
+        if priv_level == 'user':
+            self.privileges = ['can read/write messages', 'can edit own posts']
+        elif priv_level == 'admin':
+            self.privileges = ['can read/write messages', 'can edit own posts', 'can add user', 'can delete user', 'can delete any post',
                         'can edit any post', 'can reset passwords', 'can reset login attempts']
+
+    def show_privileges(self):
+       """Displays privileges for the user."""
+       print(f"\nThis user has the following privileges in this system:")
+       for priv in self.privileges:
+            print(f"- {priv}")
+
 
 user_a = Admin('john', 'brown', 'department of equity')
 user_b = User('frances', 'bartleby', 'legal')
 
-user_a.show_privileges()
-user_b.show_privileges()
+user_a.privs.show_privileges()
+user_b.privs.show_privileges()
